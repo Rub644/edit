@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 
 public class listAdapter extends ArrayAdapter<com.example.edit.Post> {
-    String string="helo";
+    String string="";
     private Context mcontext;
     int mresource;
     private DataBaseHelper db;
@@ -58,7 +58,8 @@ public class listAdapter extends ArrayAdapter<com.example.edit.Post> {
             convertView= inflater.inflate(mresource,parent,false);
             holder=new ViewHolder();
             holder.img=(ImageView) convertView.findViewById(R.id.imageView);
-            holder.txt=(TextView) convertView.findViewById(R.id.textView);
+
+          holder.txt=(TextView) convertView.findViewById(R.id.textView);
             ImageButton deleteButton = convertView.findViewById(R.id.delbtn);
             ImageButton editButton = convertView.findViewById(R.id.editbtn);
 
@@ -95,6 +96,9 @@ public class listAdapter extends ArrayAdapter<com.example.edit.Post> {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             string= editText.getText().toString();
+                            db.editOne(postToEdit,string);
+
+                            notifyDataSetChanged(); // Notify the adapter of the data change
                         } });
 
                     mydialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -105,9 +109,6 @@ public class listAdapter extends ArrayAdapter<com.example.edit.Post> {
                     });
                     mydialog.show();
 
-                    db.editOne(postToEdit,string);
-
-                    notifyDataSetChanged(); // Notify the adapter of the data change
 
 
                 }
@@ -125,4 +126,7 @@ public class listAdapter extends ArrayAdapter<com.example.edit.Post> {
         holder.txt.setText(post.getPost());
         return convertView;
     }
+
+
+
 }

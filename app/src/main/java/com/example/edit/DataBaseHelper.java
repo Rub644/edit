@@ -24,7 +24,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COL_IMAGE = "image";
 
     public DataBaseHelper(@Nullable Context context) {
-        super(context, "nn.db", null, 1);
+        super(context, "kk.db", null, 1);
     }
 
     // when creating the database

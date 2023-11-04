@@ -12,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Edit"
         tools:targetApi="31">
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ADD"
+            android:exported="false" />
         <activity
             android:name=".home"
             android:exported="false" />
